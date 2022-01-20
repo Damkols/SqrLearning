@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./styles/theme";
+import { GlobalStyle } from "./styles/global";
+import { ThemeContext } from "./context/themeContext";
+import DashBoard from "./containers/DashBoard";
 
-function App() {
+const App = () => {
+  const context = useContext(ThemeContext);
+  const { theme } = context;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyle />
+        <DashBoard />
+      </>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
