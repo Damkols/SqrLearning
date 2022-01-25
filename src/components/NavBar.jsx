@@ -43,7 +43,7 @@ const Container = styled.div`
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 1rem 2rem 0;
+  padding: 1.75rem 1rem 2rem 0;
 
   svg {
     height: 1.4rem;
@@ -79,6 +79,13 @@ const Menu = styled.div`
     max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
     width: 100%;
     transition: max-height 0.3s ease-in-out;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      --webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      background-color: rgba(255, 255, 255, 0.4);
+    }
   }
 `;
 const LinkWrapper = styled.div`
